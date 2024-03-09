@@ -46,15 +46,7 @@ const PORT = process.env.PORT || 8000
 
 //it is a test route just to see our server is working
 app.get("/", (req, res) => {
-    return res.send(`<div style = "background:magenta;padding:100px;"><h2>Welcome to Data Virtualization Server</h2>
-    <p>Below are the some examples of supported routes...</p>
-        <div><ul>
-            <li>GET all data from the database - /api/data</li>
-            <li>GET data filtered by year - /api/data/year/:year</li>
-            <li>GET data filtered by region - /api/data/region/:region</li>
-            <li>Much more...</li>
-        </ul></div>
-    </div>`)
+   res.json("Hello");
 })
 
 
