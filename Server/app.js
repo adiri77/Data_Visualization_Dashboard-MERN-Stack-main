@@ -49,6 +49,21 @@ app.get("/", (req, res) => {
    res.json("Hello");
 })
 
+// Serve the frontend in production
+if (process.env.NODE_ENV === 'production') {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, '/frontend/dist')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+  );
+} else {
+  // Display a message if not in production
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
+
 
 //function is used to bind and listen to the connections on the specified host and port
 app.listen(PORT, (req, res) => {
